@@ -1,10 +1,13 @@
 package com.dashboard.controller;
 
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,9 +26,9 @@ public class DashboardController {
     }
 
     @PostMapping("/log")
-    public ResponseEntity<String> logPayload(@RequestBody String payload) {
+    public ResponseEntity<String> logPayload(@RequestHeader Map<String, String> headers, @RequestBody String payload) {
 
-        dashboardService.addLog(payload);
+        dashboardService.addLog(headers, payload);
 
         return ResponseEntity.ok("Payload Logged Successfully");
     }

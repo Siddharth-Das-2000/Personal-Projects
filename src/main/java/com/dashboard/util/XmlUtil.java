@@ -157,7 +157,7 @@ public class XmlUtil {
     private XmlUtil() {
     }
 
-    public static boolean isErrorPayload(Map<String, Object> headers) {
+    public static boolean isErrorPayload(Map<String, String> headers) {
         return headers.containsKey("X-CPI-ERROR");
     }
 }

@@ -2,6 +2,7 @@ package com.dashboard.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Service;
@@ -22,9 +23,9 @@ public class DashboardService {
         this.repository = repository;
     }
 
-    public void addLog(String payload) {
+    public void addLog(Map<String, String> headers, String payload) {
 
-        boolean isError = XmlUtil.isErrorPayload(payload);
+        boolean isError = XmlUtil.isErrorPayload(headers);
 
         TransactionLog log = new TransactionLog(
                 counter.incrementAndGet(),
